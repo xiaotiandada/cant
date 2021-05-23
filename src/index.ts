@@ -25,9 +25,25 @@ export const compose = (...fn: Function[]) => {
   return fn.reduce((a, b) => (...args: any) => a(b(...args)))
 }
 
+/**
+ * sleep
+ * @param time number
+ * @returns
+ */
+export const sleep = (time: number) => new Promise(resolve => setTimeout(resolve, time))
+
 // ------ REG --------
 // match 不包含 AB 的字符
 export const matchStr = (str: string, left: string, right: string) => {
   const pattern = new RegExp(`(?<=${left}).*?(?=${right})`);
   return str.match(pattern);
 };
+
+/**
+ * 首字母大写
+ * @param param0 string
+ * @returns String
+ */
+export const firstUpperCase = ([first, ...other]: any) => {
+  return first.toLocaleUpperCase() + other.join('')
+}
