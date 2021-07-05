@@ -1,5 +1,7 @@
 # tool-ant
 
+[![Build Status](https://travis-ci.com/xiaotiandada/tool-ant.svg?branch=master)](https://travis-ci.com/xiaotiandada/tool-ant)
+
 Tool
 
 ## Installation
