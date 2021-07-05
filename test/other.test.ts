@@ -7,6 +7,11 @@ describe('convertArray', function() {
 
     expect([{a: 1}, {a: 2}]).to.deep.equal(result)
   });
+  it('二维数组转换为一维数组 [{a:1}]  to [{a:1}]', function() {
+    const result = convertArray( [{a:1}])
+
+    expect([{a:1}]).to.deep.equal(result)
+  });
 });
 
 
@@ -45,5 +50,20 @@ describe('compose', function() {
     const result = compose(add, add, add)(0)
 
     expect(3).to.equal(result)
+  });
+
+  it('compose 0 to 1', function() {
+
+    const add = (x: number) => ++x
+    const result = compose(add)(0)
+
+    expect(1).to.equal(result)
+  });
+
+  it('compose 0 to 0', function() {
+
+    const result = compose()(0)
+
+    expect(0).to.equal(result)
   });
 });

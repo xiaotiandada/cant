@@ -5,7 +5,9 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "mocha --require ts-node/register ./test/*.ts",
+    "test:other": "mocha --require ts-node/register ./test/other.test.ts",
     "coverage": "nyc yarn test",
+    "coverage:other": "nyc yarn test:other",
     "upload-coverage": "codecov -f ./.test_output/coverage/coverage-final.json",
     "build": "rollup -c"
   },
