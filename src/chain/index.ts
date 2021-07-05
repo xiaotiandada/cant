@@ -44,7 +44,7 @@ export async function ERC20Profile(address: string, chain: number) {
       decimals: decimals || 18,
     }
   } catch (e) {
-    console.log(e)
+    console.log('error: ', e)
     return
   }
 }

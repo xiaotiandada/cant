@@ -23,6 +23,12 @@ describe('balanceDecimal', function() {
 
     expect(amount).to.equal('0.12');
   });
+
+  it('123 to 123', function() {
+    const amount = balanceDecimal('123', 3)
+
+    expect(amount).to.equal('123');
+  });
 });
 
 
@@ -43,6 +49,11 @@ describe('ERC20Profile', function() {
 
     expect(await ERC20Profile('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', 97))
       .to.deep.equal({ symbol: 'FSB', name: '粉丝币123', decimals: 4 })
+  });
+
+  it('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', async function() {
+    expect(await ERC20Profile('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', 111))
+      .to.deep.equal(undefined)
   });
 
   it('empty', async function() {
