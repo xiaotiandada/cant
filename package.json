@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "mocha --require ts-node/register ./test/*.ts",
+    "coverage": "nyc yarn test",
     "build": "rollup -c"
   },
   "homepage": "https://github.com/xiaotiandada/tool-ant",
@@ -33,6 +34,7 @@
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
     "rollup": "^2.35.1",
     "rollup-plugin-typescript2": "^0.29.0",
     "ts-node": "^9.1.1",
