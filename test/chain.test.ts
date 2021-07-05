@@ -17,11 +17,17 @@ describe('balanceDecimal', function() {
 
     expect(amount).to.equal('0');
   });
+
+  it('0.12 to 0', function() {
+    const amount = balanceDecimal('0.12', 3)
+
+    expect(amount).to.equal('0.12');
+  });
 });
 
 
 describe('ERC20Profile', function() {
-  it('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', function() {
+  it('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', async function() {
 
     // ERC20Profile('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', 97)
     // .then((res) => {
@@ -35,7 +41,12 @@ describe('ERC20Profile', function() {
     // })
     // .catch(e => done(e))
 
-    return expect(ERC20Profile('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', 97))
-      .to.eventually.to.deep.equal({ symbol: 'FSB', name: '粉丝币123', decimals: 4 })
+    expect(await ERC20Profile('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', 97))
+      .to.deep.equal({ symbol: 'FSB', name: '粉丝币123', decimals: 4 })
+  });
+
+  it('empty', async function() {
+      expect(await ERC20Profile('', 97))
+      .to.deep.equal(undefined)
   });
 });
