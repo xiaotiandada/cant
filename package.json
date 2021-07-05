@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --require ts-node/register ./test/*.ts",
     "coverage": "nyc yarn test",
-    "upload-coverage": "codecov -f ./test_output/coverage/coverage-final.json",
+    "upload-coverage": "codecov -f ./.test_output/coverage/coverage-final.json",
     "build": "rollup -c"
   },
   "homepage": "https://github.com/xiaotiandada/tool-ant",

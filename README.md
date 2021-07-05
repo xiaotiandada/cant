@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/xiaotiandada/tool-ant.svg?branch=master)](https://travis-ci.com/xiaotiandada/tool-ant)
 
+[![codecov](https://codecov.io/gh/xiaotiandada/tool-ant/branch/master/graph/badge.svg?token=9EH5IT0YS7)](https://codecov.io/gh/xiaotiandada/tool-ant)
+
 Tool
 
 ## Installation
