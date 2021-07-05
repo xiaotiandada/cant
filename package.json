@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha --require ts-node/register ./test/*.ts",
     "coverage": "nyc yarn test",
+    "upload-coverage": "codecov -f ./test_output/coverage-final.json",
     "build": "rollup -c"
   },
   "homepage": "https://github.com/xiaotiandada/tool-ant",
@@ -33,6 +34,7 @@
     "assert": "^2.0.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
+    "codecov": "^3.8.2",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
     "rollup": "^2.35.1",

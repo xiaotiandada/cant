@@ -9,7 +9,8 @@
     "reporter":[
         "text-summary",
         "html",
-        "lcovonly"
+        "lcovonly",
+        "json"
     ],
     "report-dir": ".test_output/coverage"
 }
