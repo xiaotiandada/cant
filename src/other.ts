@@ -47,3 +47,13 @@ export const matchStr = (str: string, left: string, right: string) => {
 export const firstUpperCase = ([first, ...other]: any) => {
   return first.toLocaleUpperCase() + other.join('')
 }
+
+
+/**
+ * 范围随机数
+ * @param min 最小
+ * @param max 最大
+ * @returns number
+ */
+
+export const randomRange = (min: number, max: number): number => Math.floor(Math.random() * (max - min + 1) + min);

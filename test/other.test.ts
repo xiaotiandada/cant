@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { convertArray, firstUpperCase, matchStr, sleep, compose } from '../src/index'
+import { convertArray, firstUpperCase, matchStr, sleep, compose, randomRange } from '../src/index'
 
 describe('convertArray', function() {
   it('二维数组转换为一维数组 [ [{a: 1}], [{a: 2}]  to [{a: 1}, {a: 2}]', function() {
@@ -67,3 +67,10 @@ describe('compose', function() {
     expect(0).to.equal(result)
   });
 });
+
+describe('randomRange', () => {
+  it('random 1 - 5', () => {
+    const result = randomRange(1, 5)
+    expect([1, 2, 3, 4, 5]).to.include(result)
+  })
+})
