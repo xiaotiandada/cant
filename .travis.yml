@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-  - lts/*
-
-after_script:
-  - yarn upload-coverage
-
-script:
-  - yarn coverage
