@@ -1,0 +1,498 @@
+# chain
+
+### Code
+
+### constant
+
+```ts
+import { ethers } from "ethers";
+
+export const ZERO = "0x0000000000000000000000000000000000001000";
+
+export const NetworksId = {
+  BSC_MAINNET: 56,
+  BSC_TESTNET: 97,
+  MATIC_MAINNET: 137,
+  MATIC_TESTNET: 80001,
+};
+
+export const CALL_ONLY_PROVIDER = {
+  [NetworksId.BSC_MAINNET]: new ethers.providers.JsonRpcProvider(
+    "https://bsc-dataseed.binance.org/",
+    {
+      name: "BSC Mainnet",
+      chainId: 56,
+    }
+  ),
+  [NetworksId.BSC_TESTNET]: new ethers.providers.JsonRpcProvider(
+    "https://data-seed-prebsc-1-s1.binance.org:8545/",
+    {
+      name: "BSC Testnet",
+      chainId: 97,
+    }
+  ),
+  [NetworksId.MATIC_MAINNET]: new ethers.providers.JsonRpcProvider(
+    "https://rpc-mainnet.maticvigil.com/",
+    {
+      name: "Matic Mainnet",
+      chainId: 137,
+    }
+  ),
+  [NetworksId.MATIC_TESTNET]: new ethers.providers.JsonRpcProvider(
+    "https://rpc-mumbai.maticvigil.com/",
+    {
+      name: "Matic Testnet",
+      chainId: 80001,
+    }
+  ),
+};
+```
+
+### abi
+
+```ts
+import { utils } from "ethers";
+import ERC20Abi from "./ERC20";
+
+export const ERC20 = new utils.Interface(ERC20Abi);
+
+export default [
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "name",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "symbol",
+        type: "string",
+      },
+      {
+        internalType: "uint8",
+        name: "decimals",
+        type: "uint8",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "owner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "Approval",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "Transfer",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
+    ],
+    name: "allowance",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "approve",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "who",
+        type: "address",
+      },
+    ],
+    name: "balanceOf",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "decimals",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "mint",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "name",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "symbol",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "transfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "transferFrom",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+];
+```
+
+### Index
+
+```ts
+import { ethers, utils } from "ethers";
+import { ZERO, CALL_ONLY_PROVIDER } from "./constant";
+import { ERC20 } from "./abi/index";
+
+/**
+ * 余额小数处理
+ * @param amount
+ * @param decimal
+ * @returns
+ */
+export const balanceDecimal = (amount: string, decimal: number): string => {
+  // utils.formatUnits 是 0.0
+  if (amount === "0.0") return "0";
+
+  let point = amount.indexOf(".");
+  if (~point) {
+    return amount.slice(0, point + 1 + decimal);
+  }
+  return amount;
+};
+
+/**
+ * 获取 Token 信息
+ * @param {*} address token address
+ * @param {*} chain
+ * @returns { symbol, name, decimals }
+ */
+export async function ERC20Profile(address: string, chain: number) {
+  if (!address) return;
+  if (address === ZERO) return;
+
+  try {
+    const provider = CALL_ONLY_PROVIDER[chain];
+    const ERC20Contract = new ethers.Contract(
+      utils.getAddress(address),
+      ERC20,
+      provider
+    );
+
+    const symbol = await ERC20Contract.symbol();
+    const name = await ERC20Contract.name();
+    const decimals = await ERC20Contract.decimals();
+
+    return {
+      symbol,
+      name,
+      decimals: decimals || 18,
+    };
+  } catch (e) {
+    console.log("error: ", e);
+    return;
+  }
+}
+```
+
+## Test
+
+```ts
+import chai, { expect } from "chai";
+import chaiAsPromised from "chai-as-promised";
+chai.use(chaiAsPromised);
+
+import { balanceDecimal, ERC20Profile } from "../src/index";
+
+describe("balanceDecimal", function () {
+  it("0.1234567 to 0.123", function () {
+    const amount = balanceDecimal("0.123456789", 3);
+
+    expect(amount).to.equal("0.123");
+  });
+
+  it("0.0 to 0", function () {
+    const amount = balanceDecimal("0.0", 3);
+
+    expect(amount).to.equal("0");
+  });
+
+  it("0.12 to 0", function () {
+    const amount = balanceDecimal("0.12", 3);
+
+    expect(amount).to.equal("0.12");
+  });
+
+  it("123 to 123", function () {
+    const amount = balanceDecimal("123", 3);
+
+    expect(amount).to.equal("123");
+  });
+});
+
+describe("ERC20Profile", function () {
+  it("0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D", async function () {
+    // ERC20Profile('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D', 97)
+    // .then((res) => {
+    //   console.log('0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D: ', res)
+    //   if (res) {
+    //     expect(res).to.deep.equal({  symbol: 'FSB', name: '粉丝币123', decimals: 4 })
+    //     done()
+    //   } else {
+    //     done('no token profile')
+    //   }
+    // })
+    // .catch(e => done(e))
+
+    expect(
+      await ERC20Profile("0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D", 97)
+    ).to.deep.equal({ symbol: "FSB", name: "粉丝币123", decimals: 4 });
+  });
+
+  it("0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D", async function () {
+    expect(
+      await ERC20Profile("0x8689e5AD15E4FB26d1Ca6552f471f2Bf9b37573D", 111)
+    ).to.deep.equal(undefined);
+  });
+
+  it("empty", async function () {
+    expect(await ERC20Profile("", 97)).to.deep.equal(undefined);
+  });
+});
+```
