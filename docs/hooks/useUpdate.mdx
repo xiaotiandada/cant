@@ -1,0 +1,14 @@
+https://ahooks.js.org/hooks/use-update
+https://github.com/alibaba/hooks/blob/2b1cb941969268c2a651747e73b98f945805e544/packages/hooks/src/useUpdate/index.ts
+
+```tsx
+import { useCallback, useState } from 'react';
+
+const useUpdate = () => {
+  const [, setState] = useState({});
+
+  return useCallback(() => setState({}), []);
+};
+
+export default useUpdate;
+```
